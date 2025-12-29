@@ -1,0 +1,89 @@
+﻿@model TravelDeskManagement.Models.TravelRequest
+@using TravelDeskManagement.Helpers
+
+@{
+    ViewData["Title"] = "Delete Travel Request";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+
+        <div class="card shadow-lg border-danger">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">Confirm Delete</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong> This action cannot be undone.
+                </div>
+
+                <dl class="row mb-0">
+
+                    <dt class="col-sm-4">Employee</dt>
+                    <dd class="col-sm-8">
+                        @Model.Employee?.FullName
+                    </dd>
+
+                    <dt class="col-sm-4">Purpose</dt>
+                    <dd class="col-sm-8">
+                        @Model.GetPurposeDisplay()
+                    </dd>
+
+                    <dt class="col-sm-4">Travel From</dt>
+                    <dd class="col-sm-8">
+                        @Model.TravelFrom
+                    </dd>
+
+                    <dt class="col-sm-4">Travel To</dt>
+                    <dd class="col-sm-8">
+                        @Model.TravelTo
+                    </dd>
+
+                    <dt class="col-sm-4">Departure Date</dt>
+                    <dd class="col-sm-8">
+                        @Model.DepartureDate.ToString("dd-MMM-yyyy")
+                    </dd>
+
+                    <dt class="col-sm-4">Return Date</dt>
+                    <dd class="col-sm-8">
+                        @Model.ReturnDate.ToString("dd-MMM-yyyy")
+                    </dd>
+
+                    <dt class="col-sm-4">Status</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.Status == TravelRequestStatus.Approved)
+                        {
+                            <span class="badge bg-success">Approved</span>
+                        }
+                        else if (Model.Status == TravelRequestStatus.Pending)
+                        {
+                            <span class="badge bg-warning text-dark">Pending</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Rejected</span>
+                        }
+                    </dd>
+
+                </dl>
+
+            </div>
+
+            <div class="card-footer d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    ← Cancel
+                </a>
+
+                <form asp-action="Delete" method="post" class="m-0">
+                    <input type="hidden" asp-for="RequestId" />
+                    <button type="submit" class="btn btn-danger">
+                        Delete Permanently
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

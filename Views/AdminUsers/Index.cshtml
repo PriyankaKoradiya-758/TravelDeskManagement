@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TravelDeskManagement.Models.AdminUser>
+
+@{
+    ViewData["Title"] = "Admin Users";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h3 class="mb-0">Admin Users</h3>
+    <a asp-action="Create" class="btn btn-secondary">
+        + Add Admin User
+    </a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        <table class="table table-striped table-hover align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Username</th>
+                    <th class="text-center set-action">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Username</td>
+
+                        <td class="text-center  d-flex gap-2">
+                            <a asp-action="Edit"
+                               asp-route-id="@item.AdminUserId"
+                               class="btn btn-sm btn-outline-secondary">
+                                Edit
+                            </a>
+
+                            <a asp-action="Details"
+                               asp-route-id="@item.AdminUserId"
+                               class="btn btn-sm btn-outline-secondary">
+                                Details
+                            </a>
+
+                            <a asp-action="Delete"
+                               asp-route-id="@item.AdminUserId"
+                               class="btn btn-sm btn-secondary">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info text-center">
+                No admin users found.
+            </div>
+        }
+
+    </div>
+</div>

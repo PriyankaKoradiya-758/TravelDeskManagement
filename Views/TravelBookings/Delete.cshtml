@@ -1,0 +1,65 @@
+﻿@model TravelDeskManagement.Models.TravelBooking
+
+@{
+    ViewData["Title"] = "Delete Travel Booking";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+
+        <div class="card shadow-lg border-danger">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">Confirm Travel Booking Deletion</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong> This action cannot be undone.
+                </div>
+
+                <dl class="row mb-0">
+
+                    <dt class="col-sm-4">Request ID</dt>
+                    <dd class="col-sm-8">@Model.RequestId</dd>
+
+                    <dt class="col-sm-4">Flight Number</dt>
+                    <dd class="col-sm-8">@Model.FlightNumber</dd>
+
+                    <dt class="col-sm-4">Airline</dt>
+                    <dd class="col-sm-8">@Model.Airline</dd>
+
+                    <dt class="col-sm-4">Booking Reference</dt>
+                    <dd class="col-sm-8">@Model.BookingReference</dd>
+
+                    <dt class="col-sm-4">Hotel Name</dt>
+                    <dd class="col-sm-8">
+                        @if (!string.IsNullOrWhiteSpace(Model.HotelName))
+                        {
+                            @Model.HotelName
+                        }
+                        else
+                        {
+                            <span class="text-muted">N/A</span>
+                        }
+                    </dd>
+
+                </dl>
+
+            </div>
+
+            <div class="card-footer d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    ← Cancel
+                </a>
+
+                <form asp-action="Delete" method="post" class="m-0">
+                    <input type="hidden" asp-for="BookingId" />
+                    <button type="submit" class="btn btn-danger">
+                        Delete Permanently
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

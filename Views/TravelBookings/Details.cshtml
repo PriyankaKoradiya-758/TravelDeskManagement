@@ -1,0 +1,61 @@
+﻿@model TravelDeskManagement.Models.TravelBooking
+
+@{
+    ViewData["Title"] = "Travel Booking Details";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-7">
+
+        <div class="card shadow-lg">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Travel Booking Details</h5>
+            </div>
+
+            <div class="card-body">
+
+                <dl class="row mb-0">
+
+                    <dt class="col-sm-4">Request ID</dt>
+                    <dd class="col-sm-8">@Model.RequestId</dd>
+
+                    <dt class="col-sm-4">Flight Number</dt>
+                    <dd class="col-sm-8">@Model.FlightNumber</dd>
+
+                    <dt class="col-sm-4">Airline</dt>
+                    <dd class="col-sm-8">@Model.Airline</dd>
+
+                    <dt class="col-sm-4">Booking Reference</dt>
+                    <dd class="col-sm-8">@Model.BookingReference</dd>
+
+                    <dt class="col-sm-4">Hotel Name</dt>
+                    <dd class="col-sm-8">
+                        @if (!string.IsNullOrWhiteSpace(Model.HotelName))
+                        {
+                            @Model.HotelName
+                        }
+                        else
+                        {
+                            <span class="text-muted">N/A</span>
+                        }
+                    </dd>
+
+                </dl>
+
+            </div>
+
+            <div class="card-footer d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    ← Back to List
+                </a>
+
+                <a asp-action="Edit"
+                   asp-route-id="@Model.BookingId"
+                   class="btn btn-secondary">
+                    Edit Booking
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

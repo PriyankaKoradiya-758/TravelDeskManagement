@@ -1,0 +1,40 @@
+﻿@model TravelDeskManagement.Models.AdminUser
+
+@{
+    ViewData["Title"] = "Admin User Details";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card shadow-lg">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Admin User Details</h5>
+            </div>
+
+            <div class="card-body">
+
+                <dl class="row mb-0">
+
+                    <dt class="col-sm-4">Username</dt>
+                    <dd class="col-sm-8">@Model.Username</dd>
+
+                </dl>
+
+            </div>
+
+            <div class="card-footer d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    ← Back to List
+                </a>
+
+                <a asp-action="Edit"
+                   asp-route-id="@Model.AdminUserId"
+                   class="btn btn-secondary">
+                    Edit Admin User
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,49 @@
+﻿@model TravelDeskManagement.DTOs.AddAdminUser
+
+@{
+    ViewData["Title"] = "Create Admin User";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card shadow-lg">
+            <div class="card-header ">
+                <h5 class="mb-0">Create Admin User(With Default Password: Admin@123)</h5>
+            </div>
+
+            <div class="card-body">
+                <form asp-action="Create">
+
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <div class="mb-3">
+                        <label asp-for="Username" class="form-label"></label>
+                        <input asp-for="Username"
+                               class="form-control"
+                               placeholder="admin.username" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            ← Back
+                        </a>
+
+                        <button type="submit" class="btn btn-secondary px-4">
+                            Create User
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

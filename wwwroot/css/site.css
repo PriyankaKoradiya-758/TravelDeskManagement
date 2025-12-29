@@ -1,0 +1,81 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+.navbar, .table-striped, .card-header {
+    background: linear-gradient(to right, #51585f, #5f748c, #3e4f63) !important;
+    color:white;
+}
+
+.navbar-brand, .nav-link {
+    color: #f1f5f9;
+    font-weight: 800;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+    .navbar-brand:hover,
+    .nav-link:hover {
+        color: #c7d2fe; 
+    }
+
+.btn-secondary, btn-outline-secondary {
+    font-weight: 600;
+    padding: 5px 15px;
+    border: none;
+}
+
+.badge {
+padding:8px;
+}
+.btn-secondary {
+   
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #33597a;
+    --bs-btn-border-color: #33597a;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #33597a;
+    --bs-btn-hover-border-color: #565e64;
+}
+
+.table thead.table-dark th {
+    background-color: #435569 !important;
+    color: #fff;
+    border-color: #435569;
+}
+
+.set-action {
+    width : 200px;
+}
+
+.set-login-height {
+    min-height: 80vh; 
+}

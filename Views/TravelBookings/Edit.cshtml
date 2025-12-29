@@ -1,0 +1,85 @@
+﻿@model TravelDeskManagement.DTOs.AddTravelBooking
+
+@{
+    ViewData["Title"] = "Edit Travel Booking";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card shadow-lg">
+            <div class="card-header bg-warning text-dark">
+                <h5 class="mb-0">Edit Travel Booking</h5>
+            </div>
+
+            <div class="card-body">
+                <form asp-action="Edit">
+
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                    <input type="hidden" asp-for="BookingId" />
+
+                    <div class="mb-3">
+                        <label asp-for="RequestId" class="form-label"></label>
+                        <select asp-for="RequestId"
+                                class="form-select"
+                                asp-items="ViewBag.TravelRequests">
+                            <option value="">-- Select Travel Request --</option>
+                        </select>
+                        <span asp-validation-for="RequestId" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="FlightNumber" class="form-label"></label>
+                        <input asp-for="FlightNumber"
+                               class="form-control"
+                               placeholder="e.g. AI-101" />
+                        <span asp-validation-for="FlightNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Airline" class="form-label"></label>
+                        <input asp-for="Airline"
+                               class="form-control"
+                               placeholder="Air India / Emirates" />
+                        <span asp-validation-for="Airline" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="BookingReference" class="form-label"></label>
+                        <input asp-for="BookingReference"
+                               class="form-control"
+                               placeholder="PNR / Booking Ref" />
+                        <span asp-validation-for="BookingReference" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="HotelName" class="form-label"></label>
+                        <input asp-for="HotelName"
+                               class="form-control"
+                               placeholder="Hotel name (optional)" />
+                        <span asp-validation-for="HotelName" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-outline-secondary">
+                            ← Back
+                        </a>
+
+                        <button type="submit" class="btn btn-secondary px-4">
+                            Save Changes
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

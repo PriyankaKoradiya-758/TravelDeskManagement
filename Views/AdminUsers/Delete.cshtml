@@ -1,0 +1,45 @@
+﻿@model TravelDeskManagement.Models.AdminUser
+
+@{
+    ViewData["Title"] = "Delete Admin User";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+
+        <div class="card shadow-lg border-danger">
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">Confirm Admin User Deletion</h5>
+            </div>
+
+            <div class="card-body">
+
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong> This action cannot be undone.
+                </div>
+
+                <dl class="row mb-0">
+
+                    <dt class="col-sm-4">Username</dt>
+                    <dd class="col-sm-8">@Model.Username</dd>
+
+                </dl>
+
+            </div>
+
+            <div class="card-footer d-flex justify-content-between">
+                <a asp-action="Index" class="btn btn-outline-secondary">
+                    ← Cancel
+                </a>
+
+                <form asp-action="Delete" method="post" class="m-0">
+                    <input type="hidden" asp-for="AdminUserId" />
+                    <button type="submit" class="btn btn-danger">
+                        Delete Admin User
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

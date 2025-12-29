@@ -1,0 +1,148 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Travel Management</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TravelDeskManagement.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand"
+                   asp-area=""
+                   asp-controller="Employees"
+                   asp-action="Index">
+                    Travel Management
+                </a>
+
+                <button class="navbar-toggler" type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("JWToken") != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link  "
+                                   asp-controller="AdminUsers"
+                                   asp-action="Index">
+                                    Admins
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link  "
+                                   asp-controller="Employees"
+                                   asp-action="Index">
+                                    Employees
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link  "
+                                   asp-controller="TravelBookings"
+                                   asp-action="Index">
+                                    Bookings
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link  "
+                                   asp-controller="TravelRequests"
+                                   asp-action="Index">
+                                    Booking Requests
+                                </a>
+                            </li>
+                        }
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        @if (HttpContextAccessor.HttpContext.Session.GetString("JWToken") != null)
+                        {
+                            <li class="nav-item">
+                                <a href="#" 
+                                class="nav-link text-white" 
+                                data-bs-toggle="modal" 
+                                data-bs-target="#logoutModal">
+                                    Logout
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                   asp-controller="Auth"
+                                   asp-action="Login">
+                                    Login
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <!-- Logout Confirmation Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header bg-secondary text-white">
+                    <h5 class="modal-title">Confirm Logout</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body text-center">
+                    <p class="mb-0">
+                        Are you sure you want to logout?
+                    </p>
+                </div>
+
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+
+                    <a asp-controller="Auth"
+                       asp-action="Logout"
+                       class="btn btn-secondary">
+                        Yes, Logout
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Travel Management - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
